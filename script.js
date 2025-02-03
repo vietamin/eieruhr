@@ -28,7 +28,7 @@ document.getElementById('start').addEventListener('click', function() {
             document.getElementById('minutes').value = '';
             document.getElementById('seconds').value = '';
             document.getElementById('timer').textContent = '';
-            alarm.onpause();
+            alarm.pause();
             alarm.currentTime = 0;
         });
 
@@ -42,7 +42,7 @@ document.getElementById('start').addEventListener('click', function() {
                 text: 'Deine Eier sind fertig!',
             }).then(() => {
                 // Alarm-Sound stoppen, sobald der Dialog geschlossen wird.
-                alarm.onpause();
+                alarm.pause();
                 alarm.currentTime = 0;
             });
         } else {
