@@ -15,6 +15,7 @@ document.getElementById('start').addEventListener('click', function() {
     // Gesamtzeit in Sekunden berechnen
     let time = minutes * 60 + seconds;
     const timerElement = document.getElementById('timer');
+    const alarm = document.getElementById('alarm');
 
     // Timer starten
     const interval = setInterval(() => {
@@ -27,9 +28,10 @@ document.getElementById('start').addEventListener('click', function() {
             document.getElementById('minutes').value = '';
             document.getElementById('seconds').value = '';
             document.getElementById('timer').textContent = '';
+            alarm.onpause();
+            alarm.currentTime = 0;
         });
 
-        const alarm = document.getElementById('alarm');
         if (time <= 0) {
             clearInterval(interval);
             timerElement.textContent = 'Zeit abgelaufen!';
@@ -38,6 +40,10 @@ document.getElementById('start').addEventListener('click', function() {
                 icon: 'success',
                 title: 'Zeit abgelaufen!',
                 text: 'Deine Eier sind fertig!',
+            }).then(() => {
+                // Alarm-Sound stoppen, sobald der Dialog geschlossen wird.
+                alarm.onpause();
+                alarm.currentTime = 0;
             });
         } else {
             time--;
