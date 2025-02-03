@@ -1,0 +1,28 @@
+{
+  "name": "eieruhr",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . EierUhr --platform=all --arch=x64 --out=dist --overwrite",
+    "build:all": "npm run build:windows && npm run build:deb && build:rpm",
+    "build:windows": "node build-windows.js",
+    "build:deb": "node build-deb.js",
+    "build:rpm": "node build-rpm.js"
+  },
+  "keywords": [],
+  "author": "Viet Pham",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "sweetalert2": "^11.6.13"
+  },
+  "devDependencies": {
+    "electron": "^34.0.2",
+    "electron-installer-debian": "^3.2.0",
+    "electron-installer-redhat": "^3.4.0",
+    "electron-packager": "^17.1.2",
+    "electron-winstaller": "^5.4.0"
+  }
+}
