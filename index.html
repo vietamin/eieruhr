@@ -8,17 +8,39 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header></header>
+    <header>
+    </header>
     <main>
       <div class="container mt-5">
         <h1 class="text-center">Eier-Uhr</h1>
-        <div class="d-flex justify-content-center">
-          <input type="number" id="minutes" class="form-control m-2" placeholder="Minuten" min="0" style="width: 100px;">
-          <input type="number" id="seconds" class="form-control m-2" placeholder="Sekunden" min="0" max="59" style="width: 100px;">
-          <button id="start" class="btn btn-primary my-2">Start</button>
-          <button id="reset" class="btn btn-danger my-2">Reset</button>
+        <div class="d-flex justify-content-center flex-column align-items-center">
+          <div class="d-flex justify-content-center">
+            <input type="number" id="minutes" class="form-control m-2" placeholder="Minuten" min="0" style="width: 100px;">
+            <input type="number" id="seconds" class="form-control m-2" placeholder="Sekunden" min="0" max="59" style="width: 100px;">
+            <button id="start" class="btn btn-primary my-2">Start</button>
+            <button id="reset" class="btn btn-danger my-2">Reset</button>
+          </div>
+          <!-- Eiergröße -->
+          <div class="mb-3">
+            <label class="form-label">Eiergröße</label>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary egg-size" data-size="S">S (Klein)</button>
+                <button type="button" class="btn btn-outline-primary egg-size active" data-size="M">M (Mittel)</button>
+                <button type="button" class="btn btn-outline-primary egg-size" data-size="L">L (Groß)</button>
+            </div>
+          </div>
+
+          <!-- Eigrad -->
+          <div class="mb-3">
+            <label class="form-label">Eigrad</label>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-secondary egg-type" data-type="soft">Weich</button>
+              <button type="button" class="btn btn-outline-secondary egg-type active" data-type="medium">Medium</button>
+              <button type="button" class="btn btn-outline-secondary egg-type" data-type="hard">Hart</button>
+            </div>        
+          </div>
         </div>
-        <div id="timer" class="text-center mt-3 fs-3"></div>
+        <div id="timer" class="text-center mt-3 fs-3">0:00</div>
         <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
