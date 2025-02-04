@@ -14,24 +14,46 @@
       <div class="container mt-5">
         <h1 class="text-center">Eier-Uhr</h1>
         <div class="d-flex flex-column align-items-center">
-          <div class="mb-3 d-flex">
+          <div id="timer" class="text-center mt-3 fs-1">0:00</div>
+          <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio> 
+          <!-- Theme-Carousel -->
+          <div class="m-2 text-center">
+            <div class="carousel">
+              <button id="prev-theme" class="carousel-btn">&larr;</button>
+              <div class="carousel-inner">
+                  <div class="carousel-item active" data-theme="light">Hell</div>
+                  <div class="carousel-item" data-theme="dark">Dunkel</div>
+                  <div class="carousel-item" data-theme="colorful">Farbig</div>
+                  <div class="carousel-item" data-theme="nature">Natur</div>
+                  <div class="carousel-item" data-theme="ocean">Ozean</div>
+                  <div class="carousel-item" data-theme="sunset">Sonnenuntergang</div>
+                  <div class="carousel-item" data-theme="forest">Wald</div>
+                  <div class="carousel-item" data-theme="night">Nacht</div>
+                  <div class="carousel-item" data-theme="vintage">Vintage</div>
+                  <div class="carousel-item" data-theme="modern">Modern</div>
+                  <div class="carousel-item" data-theme="pastel">Pastell</div>
+              </div>
+              <button id="next-theme" class="carousel-btn">&rarr;</button>
+            </div>
+          </div>
+          <div class="m-2 d-flex">
             <input type="number" id="minutes" class="form-control m-2" placeholder="Minuten" min="0" style="width: 100px;">
             <input type="number" id="seconds" class="form-control m-2" placeholder="Sekunden" min="0" max="59" style="width: 100px;">
             <button id="start" class="btn btn-primary m-2">Start</button>
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
           <!-- Eiergröße -->
-          <div class="mb-3">
+          <div class="m-2">
             <label class="form-label">Eiergröße</label>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-primary egg-size" data-size="S">S (Klein)</button>
-                <button type="button" class="btn btn-outline-primary egg-size active" data-size="M">M (Mittel)</button>
-                <button type="button" class="btn btn-outline-primary egg-size" data-size="L">L (Groß)</button>
+                <button type="button" class="btn btn-outline-primary egg-size" data-size="S">S</button>
+                <button type="button" class="btn btn-outline-primary egg-size active" data-size="M">M</button>
+                <button type="button" class="btn btn-outline-primary egg-size" data-size="L">L</button>
             </div>
           </div>
 
           <!-- Eigrad -->
-          <div class="mb-3">
+          <div class="m-2">
             <label class="form-label">Eigrad</label>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-outline-secondary egg-type" data-type="soft">Weich</button>
@@ -40,8 +62,7 @@
             </div>        
           </div>
         </div>
-        <div id="timer" class="text-center mt-3 fs-3">0:00</div>
-        <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio>
+        
       </div>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="script.js"></script>

@@ -44,6 +44,35 @@ function updateTime() {
     document.getElementById('seconds').value = seconds;
 }
 
+// Theme-Carousel
+const carouselItems = document.querySelectorAll('.carousel-item');
+let currentIndex = 0;
+
+function showTheme(index) {
+    carouselItems.forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+    });
+    const selectedTheme = carouselItems[index].getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', selectedTheme);
+    localStorage.setItem('theme', selectedTheme); // Theme speichern
+}
+
+document.getElementById('prev-theme').addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
+    showTheme(currentIndex);
+});
+
+document.getElementById('next-theme').addEventListener('click', () => {
+    currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
+    showTheme(currentIndex);
+});
+
+// Beim Laden der Seite das gespeicherte Thema anwenden
+const savedTheme = localStorage.getItem('theme') || 'light';
+const savedIndex = Array.from(carouselItems).findIndex(item => item.getAttribute('data-theme') === savedTheme);
+currentIndex = savedIndex !== -1 ? savedIndex : 0;
+showTheme(currentIndex);
+
 // Timer starten
 document.getElementById('start').addEventListener('click', function() {
     const manualMinutes = parseInt(document.getElementById('minutes').value) || 0;
@@ -87,7 +116,6 @@ document.getElementById('start').addEventListener('click', function() {
 
         if (time <= 0) {
             clearInterval(interval);
-            timerElement.textContent = 'Zeit abgelaufen!';
 
             // Alarm-Sound abspielen
             alarm.play();
@@ -99,6 +127,8 @@ document.getElementById('start').addEventListener('click', function() {
             Swal.fire({
                 icon: 'success',
                 title: 'Zeit abgelaufen!',
+                color: "var(--text-color)",
+                background: "var(--background-color)",
                 html: `
                     <p>Deine Eier sind fertig!</p>
                     <p><strong>Eiergröße:</strong> ${selectedSize}</p>
@@ -126,6 +156,8 @@ document.getElementById('start').addEventListener('click', function() {
                 // Alarm-Sound stoppen, sobald der Dialog geschlossen wird
                 alarm.pause();
                 alarm.currentTime = 0; // Sound zurücksetzen
+                document.getElementById('timer').textContent = '0:00';
+                clearInterval(elapsedTimer);
             });
         } else {
             time--;
