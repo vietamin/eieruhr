@@ -91,12 +91,37 @@ document.getElementById('start').addEventListener('click', function() {
 
             // Alarm-Sound abspielen
             alarm.play();
+            
+            // Zeit seit Ablaufen des Timers
+            let elapsedTime = 0;
 
             // SweetAlert2-Dialog anzeigen
             Swal.fire({
                 icon: 'success',
                 title: 'Zeit abgelaufen!',
-                text: 'Deine Eier sind fertig!',
+                html: `
+                    <p>Deine Eier sind fertig!</p>
+                    <p><strong>Eiergröße:</strong> ${selectedSize}</p>
+                    <p><strong>Eigrad:</strong> ${selectedType === 'soft' ? 'Weich' : selectedType === 'medium' ? 'Medium' : 'Hart'}</p>
+                    <p><strong>Zeit seit Ablauf:</strong> <span id="elapsed-time">0:00</span></p>
+                `,
+                didOpen: () => {
+                    // Timer im Dialog starten
+                    const elapsedTimer = setInterval(() => {
+                        elapsedTime++;
+                        const minutes = Math.floor(elapsedTime / 60);
+                        const seconds = elapsedTime % 60;
+                        document.getElementById('elapsed-time').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    }, 1000);
+
+                    // Timer stoppen, wenn der Dialog geschlossen wird
+                    Swal.getPopup().addEventListener('mouseenter', () => {
+                        clearInterval(elapsedTimer);
+                    });
+                    Swal.getPopup().addEventListener('mouseleave', () => {
+                        clearInterval(elapsedTimer);
+                    });
+                },
             }).then(() => {
                 // Alarm-Sound stoppen, sobald der Dialog geschlossen wird
                 alarm.pause();
