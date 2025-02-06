@@ -1,6 +1,21 @@
-// Standardwerte für Eiergröße und Eigrad
+// Standardwerte für Wasserstatus, Eiergröße und Eigrad
 let selectedSize = 'M'; // Standard: Mittel (M)
 let selectedType = 'medium'; // Standard: Medium
+let selectedWaterState = 'cold';
+const waterCookingTime = 60 * 7;
+// Schaltflächen für Eiergröße
+document.querySelectorAll('.water-state').forEach(button => {
+    button.addEventListener('click', function() {
+        // Entferne die "active"-Klasse von allen Schaltflächen
+        document.querySelectorAll('.water-state').forEach(btn => btn.classList.remove('active'));
+        // Füge die "active"-Klasse der ausgewählten Schaltfläche hinzu
+        this.classList.add('active');
+        // Aktualisiere die ausgewählte Eiergröße
+        selectedWaterState = this.getAttribute('data-water');
+        updateTime(); // Aktualisiere die Zeit basierend auf der Auswahl
+    });
+});
+
 
 // Schaltflächen für Eiergröße
 document.querySelectorAll('.egg-size').forEach(button => {
@@ -37,11 +52,33 @@ const cookingTimes = {
 
 // Funktion zur Aktualisierung der Zeit basierend auf der Auswahl
 function updateTime() {
-    const time = cookingTimes[selectedSize][selectedType];
+    let time = cookingTimes[selectedSize][selectedType];
+    if (selectedWaterState === 'cold') {
+        time = time + waterCookingTime;
+    }
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     document.getElementById('minutes').value = minutes;
     document.getElementById('seconds').value = seconds;
+}
+
+// Manuelle Eingabe überwachen
+document.getElementById('minutes').addEventListener('input', handleManualInput);
+document.getElementById('seconds').addEventListener('input', handleManualInput);
+
+function handleManualInput() {
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+    // Wenn eine manuelle Zeit eingegeben wird, setze die Auswahl auf "Custom"
+    if (minutes > 0 || seconds > 0) {
+        document.querySelectorAll('.water-state').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.egg-size').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.egg-type').forEach(btn => btn.classList.remove('active'));
+        selectedSize = 'custom';
+        selectedType = 'custom';
+        selectedWaterState = 'custom';
+    } 
 }
 
 // Theme-Carousel
@@ -131,8 +168,9 @@ document.getElementById('start').addEventListener('click', function() {
                 background: "var(--background-color)",
                 html: `
                     <p>Deine Eier sind fertig!</p>
+                    <p><strong>Wasser:</strong> ${selectedWaterState}</p>
                     <p><strong>Eiergröße:</strong> ${selectedSize}</p>
-                    <p><strong>Eigrad:</strong> ${selectedType === 'soft' ? 'Weich' : selectedType === 'medium' ? 'Medium' : 'Hart'}</p>
+                    <p><strong>Eigrad:</strong> ${selectedType} </p>
                     <p><strong>Zeit seit Ablauf:</strong> <span id="elapsed-time">0:00</span></p>
                 `,
                 didOpen: () => {
@@ -157,7 +195,6 @@ document.getElementById('start').addEventListener('click', function() {
                 alarm.pause();
                 alarm.currentTime = 0; // Sound zurücksetzen
                 document.getElementById('timer').textContent = '0:00';
-                clearInterval(elapsedTimer);
             });
         } else {
             time--;
