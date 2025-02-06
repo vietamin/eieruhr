@@ -36,13 +36,7 @@
               <button id="next-theme" class="carousel-btn">&rarr;</button>
             </div>
           </div>
-          <div class="m-2 d-flex">
-            <input type="number" id="minutes" class="form-control m-2" placeholder="Minuten" min="0" style="width: 100px;">
-            <input type="number" id="seconds" class="form-control m-2" placeholder="Sekunden" min="0" max="59" style="width: 100px;">
-            <button id="start" class="btn btn-outline-primary m-2">Start</button>
-            <button id="reset" class="btn btn-danger m-2">Reset</button>
-          </div>
-              <!-- Wasser State -->
+          <!-- Wasser State -->
           <div class="m-2">
             <label class="form-label">Wasser</label>
             <div class="btn-group" role="group">
@@ -70,8 +64,21 @@
               <button type="button" class="btn btn-outline-primary egg-type" data-type="hard">Hart</button>
             </div>        
           </div>
+          
+          <!-- Timer Block -->
+          <div class="m-2 d-flex">
+            <fieldset>
+              <legend>Minuten:</legend>
+              <input type="number" id="minutes" class="form-control m-2" alt="Minuten" min="0" style="width: 100px;">
+            </fieldset>
+            <fieldset>
+              <legend>Sekunden:</legend>
+              <input type="number" id="seconds" class="form-control m-2" alt="Sekunden" min="0" style="width: 100px;">
+            </fieldset>
+            <button id="start" class="btn btn-secondary m-2">Start</button>
+            <button id="reset" class="btn btn-danger m-2">Reset</button>
+          </div>
         </div>
-        
       </div>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="script.js"></script>

@@ -3,6 +3,8 @@ let selectedSize = 'M'; // Standard: Mittel (M)
 let selectedType = 'medium'; // Standard: Medium
 let selectedWaterState = 'cold';
 const waterCookingTime = 60 * 7;
+const timerMinutes = document.getElementById('minutes');
+const timerSeconds = document.getElementById('seconds');
 // Schaltflächen für Eiergröße
 document.querySelectorAll('.water-state').forEach(button => {
     button.addEventListener('click', function() {
@@ -58,17 +60,17 @@ function updateTime() {
     }
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    document.getElementById('minutes').value = minutes;
-    document.getElementById('seconds').value = seconds;
+    timerMinutes.value = minutes;
+    timerSeconds.value = seconds;
 }
 
 // Manuelle Eingabe überwachen
-document.getElementById('minutes').addEventListener('input', handleManualInput);
-document.getElementById('seconds').addEventListener('input', handleManualInput);
+timerMinutes.addEventListener('input', handleManualInput);
+timerSeconds.addEventListener('input', handleManualInput);
 
 function handleManualInput() {
-    const minutes = parseInt(document.getElementById('minutes').value) || 0;
-    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+    const minutes = parseInt(timerMinutes.value) || 0;
+    const seconds = parseInt(timerSeconds.value) || 0;
 
     // Wenn eine manuelle Zeit eingegeben wird, setze die Auswahl auf "Custom"
     if (minutes > 0 || seconds > 0) {
@@ -112,8 +114,8 @@ showTheme(currentIndex);
 
 // Timer starten
 document.getElementById('start').addEventListener('click', function() {
-    const manualMinutes = parseInt(document.getElementById('minutes').value) || 0;
-    const manualSeconds = parseInt(document.getElementById('seconds').value) || 0;
+    const manualMinutes = parseInt(timerMinutes.value) || 0;
+    const manualSeconds = parseInt(timerSeconds.value) || 0;
     let time = manualMinutes * 60 + manualSeconds;
 
     // Überprüfen, ob die Zeit gültig ist
@@ -168,6 +170,7 @@ document.getElementById('start').addEventListener('click', function() {
                 background: "var(--background-color)",
                 html: `
                     <p>Deine Eier sind fertig!</p>
+                    <p><strong>Timer:</strong> ${timerMinutes.value}:${timerSeconds.value < 10 ? '0' : ''}${timerSeconds.value} </p>
                     <p><strong>Wasser:</strong> ${selectedWaterState}</p>
                     <p><strong>Eiergröße:</strong> ${selectedSize}</p>
                     <p><strong>Eigrad:</strong> ${selectedType} </p>
