@@ -17,7 +17,7 @@
           <div id="timer" class="text-center mt-3 fs-1">0:00</div>
           <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio>
           <!-- Theme-Carousel -->
-          <div class="m-2 text-center">
+          <div class="m-2">
             <div class="carousel">
               <button id="prev-theme" class="carousel-btn">&larr;</button>
               <div class="carousel-inner">
@@ -78,11 +78,19 @@
             <button id="start" class="btn btn-secondary m-2">Start</button>
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
+          <div class="m-2">
+            <label class="form-label">Sprache:</label>
+            <select id="language-select" class="form-select">
+              <option value="de">Deutsch</option>
+              <option value="en">English</option>
+            </select>
+          </div>
         </div>
-      </div>
+       </div>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="script.js"></script>
     </main>
-    <footer></footer>
+    <footer>
+    </footer>
   </body>
 </html>

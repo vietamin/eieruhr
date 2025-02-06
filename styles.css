@@ -191,6 +191,7 @@ legend {
     display: block;
     background-color: var(--secondary-color);
     color: var(--background-color);
+    text-align: center;
 }
 
 .carousel-btn {
@@ -204,4 +205,9 @@ legend {
 
 .carousel-btn:hover {
     color: var(--primary-hover-color);
+}
+
+#language-select {
+    display: flex;
+    width: auto;
 }

@@ -18,6 +18,46 @@ document.querySelectorAll('.water-state').forEach(button => {
     });
 });
 
+let currentLanguage = 'de'; // Standardsprache
+let translations = {};
+
+// Sprachdatei laden
+async function loadLanguage(lang) {
+  const response = await fetch(`lang/${lang}.json`);
+  translations = await response.json();
+  applyTranslations();
+}
+
+// Texte in der Anwendung aktualisieren
+function applyTranslations() {
+  document.querySelector('h1').textContent = translations.title;
+  document.querySelector('label[for="language-select"]').textContent = translations.languageLabel;
+  document.querySelector('.water-label').textContent = translations.waterLabel;
+  document.querySelector('.water-state[data-water="cooking"]').textContent = translations.waterCooking;
+  document.querySelector('.water-state[data-water="cold"]').textContent = translations.waterCold;
+  document.querySelector('.egg-size-label').textContent = translations.eggSizeLabel;
+  document.querySelector('.egg-size[data-size="S"]').textContent = translations.eggSizeS;
+  document.querySelector('.egg-size[data-size="M"]').textContent = translations.eggSizeM;
+  document.querySelector('.egg-size[data-size="L"]').textContent = translations.eggSizeL;
+  document.querySelector('.egg-type-label').textContent = translations.eggTypeLabel;
+  document.querySelector('.egg-type[data-type="soft"]').textContent = translations.eggTypeSoft;
+  document.querySelector('.egg-type[data-type="medium"]').textContent = translations.eggTypeMedium;
+  document.querySelector('.egg-type[data-type="hard"]').textContent = translations.eggTypeHard;
+  document.querySelector('#minutes').previousElementSibling.textContent = translations.minutesLabel;
+  document.querySelector('#seconds').previousElementSibling.textContent = translations.secondsLabel;
+  document.querySelector('#start').textContent = translations.startButton;
+  document.querySelector('#reset').textContent = translations.resetButton;
+}
+
+// Sprache wechseln
+document.getElementById('language-select').addEventListener('change', (event) => {
+  currentLanguage = event.target.value;
+  loadLanguage(currentLanguage);
+});
+
+// Standardsprache laden
+loadLanguage(currentLanguage);
+
 
 // Schaltflächen für Eiergröße
 document.querySelectorAll('.egg-size').forEach(button => {
@@ -169,12 +209,12 @@ document.getElementById('start').addEventListener('click', function() {
                 color: "var(--text-color)",
                 background: "var(--background-color)",
                 html: `
-                    <p>Deine Eier sind fertig!</p>
-                    <p><strong>Timer:</strong> ${timerMinutes.value}:${timerSeconds.value < 10 ? '0' : ''}${timerSeconds.value} </p>
-                    <p><strong>Wasser:</strong> ${selectedWaterState}</p>
-                    <p><strong>Eiergröße:</strong> ${selectedSize}</p>
-                    <p><strong>Eigrad:</strong> ${selectedType} </p>
-                    <p><strong>Zeit seit Ablauf:</strong> <span id="elapsed-time">0:00</span></p>
+                    <p>${translations.eggsReady}</p>
+                    <p><strong>${translations.timer}:</strong> ${timerMinutes.value}:${timerSeconds.value < 10 ? '0' : ''}${timerSeconds.value} </p>
+                    <p><strong>${translations.waterState}:</strong> ${selectedWaterState}</p>
+                    <p><strong>${translations.eggSizeLabel}:</strong> ${selectedSize}</p>
+                    <p><strong>${translations.eggTypeLabel}:</strong> ${selectedType} </p>
+                    <p><strong>${translations.timeElapsed}:</strong> <span id="elapsed-time">0:00</span></p>
                 `,
                 didOpen: () => {
                     // Timer im Dialog starten
