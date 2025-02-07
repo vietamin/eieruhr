@@ -2,6 +2,7 @@
 let selectedSize = 'M'; // Standard: Mittel (M)
 let selectedType = 'medium'; // Standard: Medium
 let selectedWaterState = 'cold';
+let timerMode = 'custom';
 const waterCookingTime = 60 * 7;
 const timerMinutes = document.getElementById('minutes');
 const timerSeconds = document.getElementById('seconds');
@@ -104,6 +105,7 @@ function updateTime() {
     const seconds = time % 60;
     timerMinutes.value = minutes;
     timerSeconds.value = seconds;
+    timerMode = 'detailed';
 }
 
 // Manuelle Eingabe überwachen
@@ -119,9 +121,7 @@ function handleManualInput() {
         document.querySelectorAll('.water-state').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.egg-size').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.egg-type').forEach(btn => btn.classList.remove('active'));
-        selectedSize = 'custom';
-        selectedType = 'custom';
-        selectedWaterState = 'custom';
+        timerMode = 'custom';
     } 
 }
 
@@ -203,7 +203,13 @@ document.getElementById('start').addEventListener('click', function() {
             
             // Zeit seit Ablaufen des Timers
             let elapsedTime = 0;
-
+            let timerModeOutput = '<p><strong>Timer Mode:<//strong> custom</p>';
+            if (timerMode === 'detailed') {
+                    timerModeOutput = `<p><strong>${translations.waterState}:</strong> ${selectedWaterState}</p>
+                    <p><strong>${translations.eggSizeLabel}:</strong> ${selectedSize}</p>
+                    <p><strong>${translations.eggTypeLabel}:</strong> ${selectedType} </p>
+                    `;
+            }
             // SweetAlert2-Dialog anzeigen
             Swal.fire({
                 icon: 'success',
@@ -213,9 +219,7 @@ document.getElementById('start').addEventListener('click', function() {
                 html: `
                     <p>${translations.eggsReady}</p>
                     <p><strong>${translations.timer}:</strong> ${timerMinutes.value}:${timerSeconds.value < 10 ? '0' : ''}${timerSeconds.value} </p>
-                    <p><strong>${translations.waterState}:</strong> ${selectedWaterState}</p>
-                    <p><strong>${translations.eggSizeLabel}:</strong> ${selectedSize}</p>
-                    <p><strong>${translations.eggTypeLabel}:</strong> ${selectedType} </p>
+                    ${timerModeOutput}
                     <p><strong>${translations.timeElapsed}:</strong> <span id="elapsed-time">0:00</span></p>
                 `,
                 didOpen: () => {
