@@ -38,7 +38,7 @@
           </div>
           <!-- Wasser State -->
           <div class="m-2">
-            <label class="form-label">Wasserzustand</label>
+            <label class="wate-state-label">Wasserzustand</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary water-state" data-water="cooking">Kocht</button>
                 <button type="button" class="btn btn-outline-primary water-state active" data-water="cold">Kalt</button>
@@ -47,7 +47,7 @@
 
           <!-- Eiergröße -->
           <div class="m-2">
-            <label class="form-label">Eiergröße</label>
+            <label class="egg-size-label">Eiergröße</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary egg-size" data-size="S">S</button>
                 <button type="button" class="btn btn-outline-primary egg-size active" data-size="M">M</button>
@@ -57,7 +57,7 @@
 
           <!-- Eigrad -->
           <div class="m-2">
-            <label class="form-label">Eigrad</label>
+            <label class="egg-type-label">Eigrad</label>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-outline-primary egg-type" data-type="soft">Weich</button>
               <button type="button" class="btn btn-outline-primary egg-type active" data-type="medium">Medium</button>
@@ -68,18 +68,18 @@
           <!-- Timer Block -->
           <div class="m-2 d-flex">
             <fieldset>
-              <legend>Minuten:</legend>
+              <legend class="minutes-label">Minuten:</legend>
               <input type="number" id="minutes" class="form-control m-2" alt="Minuten" min="0" style="width: 100px;">
             </fieldset>
             <fieldset>
-              <legend>Sekunden:</legend>
+              <legend class="seconds-label">Sekunden:</legend>
               <input type="number" id="seconds" class="form-control m-2" alt="Sekunden" min="0" style="width: 100px;">
             </fieldset>
             <button id="start" class="btn btn-secondary m-2">Start</button>
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
           <div class="m-2">
-            <label class="form-label">Sprache:</label>
+            <label class="language-label">Sprache:</label>
             <select id="language-select" class="form-select">
               <option value="de">Deutsch</option>
               <option value="en">English</option>

@@ -31,8 +31,8 @@ async function loadLanguage(lang) {
 // Texte in der Anwendung aktualisieren
 function applyTranslations() {
   document.querySelector('h1').textContent = translations.title;
-  document.querySelector('label[for="language-select"]').textContent = translations.languageLabel;
-  document.querySelector('.water-label').textContent = translations.waterLabel;
+  document.querySelector('label-label').textContent = translations.languageLabel;
+  document.querySelector('.water-state-label').textContent = translations.waterLabel;
   document.querySelector('.water-state[data-water="cooking"]').textContent = translations.waterCooking;
   document.querySelector('.water-state[data-water="cold"]').textContent = translations.waterCold;
   document.querySelector('.egg-size-label').textContent = translations.eggSizeLabel;
@@ -43,8 +43,10 @@ function applyTranslations() {
   document.querySelector('.egg-type[data-type="soft"]').textContent = translations.eggTypeSoft;
   document.querySelector('.egg-type[data-type="medium"]').textContent = translations.eggTypeMedium;
   document.querySelector('.egg-type[data-type="hard"]').textContent = translations.eggTypeHard;
-  document.querySelector('#minutes').previousElementSibling.textContent = translations.minutesLabel;
-  document.querySelector('#seconds').previousElementSibling.textContent = translations.secondsLabel;
+//  document.querySelector('#minutes').previousElementSibling.textContent = translations.minutesLabel;
+//  document.querySelector('#seconds').previousElementSibling.textContent = translations.secondsLabel;
+  document.querySelector('.minutes-label').textContent = translations.minutesLabel;
+  document.querySelector('.seconds-label').textContent = translations.secondsLabel;
   document.querySelector('#start').textContent = translations.startButton;
   document.querySelector('#reset').textContent = translations.resetButton;
 }
