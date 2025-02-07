@@ -1,7 +1,4 @@
-// Standardwerte für Wasserstatus, Eiergröße und Eigrad
-let selectedSize = 'M'; // Standard: Mittel (M)
-let selectedType = 'medium'; // Standard: Medium
-let selectedWaterState = 'cold';
+// Standardwerte für Wasserstatus, Eiergröße und Eigrad let selectedSize = 'M'; // Standard: Mittel (M) let selectedType = 'medium'; // Standard: Medium let selectedWaterState = 'cold';
 let timerMode = 'custom';
 const waterCookingTime = 60 * 7;
 const timerMinutes = document.getElementById('minutes');
@@ -32,7 +29,7 @@ async function loadLanguage(lang) {
 // Texte in der Anwendung aktualisieren
 function applyTranslations() {
   document.querySelector('h1').textContent = translations.title;
-  document.querySelector('label-label').textContent = translations.languageLabel;
+  document.querySelector('language-label').textContent = translations.languageLabel;
   document.querySelector('.water-state-label').textContent = translations.waterState;
   document.querySelector('.water-state[data-water="cooking"]').textContent = translations.waterCooking;
   document.querySelector('.water-state[data-water="cold"]').textContent = translations.waterCold;
