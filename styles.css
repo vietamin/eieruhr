@@ -212,3 +212,15 @@ legend {
     display: flex;
     width: auto;
 }
+
+.egg-size.small {
+    font-size: 0.9em;
+}
+
+.egg-size.medium {
+    font-size: 1em;
+}
+
+.egg-size.large {
+    font-size: 1.2em;
+}
