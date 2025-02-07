@@ -125,17 +125,11 @@ body {
     color: var(--text-color);
 }
 
-container {
-  /* 
-   * width: 100%;
-  padding-right: var(--bs-gutter-x,.75rem);
-  padding-left: var(--bs-gutter-x,.75rem);
-  margin-right: auto;
-  margin-left: auto;
-  */
+.container {
     background-color: var(--background-color-primary);
     border-radius: 25px;
     border: solid 1px var(--secondary-color);
+    padding: 1em;
 }
 
 legend {
@@ -191,6 +185,12 @@ legend {
     border-color: var(--secondary-color);
 }
 
+@media (min-width: 576px) {
+    .carousel {
+        max-width:520px;
+    }
+}
+
 .carousel {
     display: flex;
     align-items: center;
@@ -199,7 +199,7 @@ legend {
 }
 
 .carousel-inner {
-    width: 200px;
+    width: stretch;
     justify-content: center;
 }
 
@@ -247,4 +247,8 @@ legend {
 
 .egg-size.large {
     font-size: 1.2em;
+}
+
+#timer {
+    font-size: 3em;
 }
