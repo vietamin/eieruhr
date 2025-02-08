@@ -125,6 +125,12 @@ body {
     color: var(--text-color);
 }
 
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  bottom: 0px;
+}
+
 .container {
     background-color: var(--background-color-primary);
     border-radius: 25px;
