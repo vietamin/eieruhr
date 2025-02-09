@@ -125,6 +125,10 @@ body {
     color: var(--text-color);
 }
 
+main {
+  padding: 0.8em;
+}
+
 footer {
   text-align: center;
   font-size: 0.8em;
