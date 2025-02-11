@@ -10,11 +10,11 @@
   </head>
   <body>
     <header>
+      <h1 class="text-center">Eier-Uhr</h1>
     </header>
     <main>
-      <div class="container mt-5">
+      <div class="container m-2">
         <div class="d-flex flex-column align-items-center">
-          <h1 class="text-center">Eier-Uhr</h1>
           <!-- Theme-Carousel -->
           <div class="m-2">
             <div class="carousel">
@@ -42,16 +42,16 @@
 
           <!-- Wasser State -->
           <div class="m-2">
-            <label class="wate-state-label">Wasserzustand</label>
-            <div class="btn-group" role="group">
+            <label class="wate-state-label" for="water-state">Wasserzustand</label>
+            <fieldset class="btn-group">
                 <button type="button" class="btn btn-outline-primary water-state" data-water="cooking">Kocht</button>
                 <button type="button" class="btn btn-outline-primary water-state active" data-water="cold">Kalt</button>
-            </div>
+            </fieldset>
           </div>
 
           <!-- Eiergröße -->
           <div class="m-2">
-            <label class="egg-size-label">Eiergröße</label>
+            <label class="egg-size-label" for="egg-size">Eiergröße</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary egg-size small" data-size="S"><i class="fas fa-egg"></i> S</button>
                 <button type="button" class="btn btn-outline-primary egg-size medium active" data-size="M"><i class="fas fa-egg"></i> M</button>
@@ -61,7 +61,7 @@
 
           <!-- Eigrad -->
           <div class="m-2">
-            <label class="egg-type-label">Eigrad</label>
+            <label class="egg-type-label" for="egg-type">Eigrad</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary egg-type" data-type="soft"><i class="fas fa-thermometer-empty"></i> Weich</button>
               <button type="button" class="btn btn-outline-primary egg-type active" data-type="medium"><i class="fas fa-thermometer-half"></i> Medium</button>
@@ -83,7 +83,7 @@
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
           <div class="m-2">
-            <label class="language-label">Sprache:</label>
+            <label class="language-label" for="language-select">Sprache:</label>
             <select id="language-select" class="form-select">
               <option value="de">Deutsch</option>
               <option value="en">English</option>

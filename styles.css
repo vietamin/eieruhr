@@ -123,6 +123,9 @@
 body {
     background-color: var(--background-color-secondary);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 main {
@@ -140,7 +143,6 @@ footer {
     border-radius: 10px;
     border: solid 1px var(--secondary-color);
     padding: 1em;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     min-width: 360px;
