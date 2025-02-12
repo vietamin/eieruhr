@@ -14,35 +14,33 @@
     </header>
     <main>
       <div class="container m-2">
-        <div class="d-flex flex-column align-items-center">
-          <!-- Theme-Carousel -->
-          <div class="m-2">
-            <div class="carousel">
-              <button id="prev-theme" class="carousel-btn">&larr;</button>
-              <div class="carousel-inner">
-                  <div class="carousel-item active" data-theme="light">Hell</div>
-                  <div class="carousel-item" data-theme="dark">Dunkel</div>
-                  <div class="carousel-item" data-theme="colorful">Farbig</div>
-                  <div class="carousel-item" data-theme="nature">Natur</div>
-                  <div class="carousel-item" data-theme="ocean">Ozean</div>
-                  <div class="carousel-item" data-theme="sunset">Sonnenuntergang</div>
-                  <div class="carousel-item" data-theme="forest">Wald</div>
-                  <div class="carousel-item" data-theme="night">Nacht</div>
-                  <div class="carousel-item" data-theme="vintage">Vintage</div>
-                  <div class="carousel-item" data-theme="modern">Modern</div>
-                  <div class="carousel-item" data-theme="pastel">Pastell</div>
-              </div>
-              <button id="next-theme" class="carousel-btn">&rarr;</button>
-            </div>
-          </div>          
+        <!-- Theme-Carousel -->
+        <div class="m-2 carousel">
+          <button id="prev-theme" class="carousel-btn">&larr;</button>
+          <div class="carousel-inner">
+              <div class="carousel-item active" data-theme="light">Hell</div>
+              <div class="carousel-item" data-theme="dark">Dunkel</div>
+              <div class="carousel-item" data-theme="colorful">Farbig</div>
+              <div class="carousel-item" data-theme="nature">Natur</div>
+              <div class="carousel-item" data-theme="ocean">Ozean</div>
+              <div class="carousel-item" data-theme="sunset">Sonnenuntergang</div>
+              <div class="carousel-item" data-theme="forest">Wald</div>
+              <div class="carousel-item" data-theme="night">Nacht</div>
+              <div class="carousel-item" data-theme="vintage">Vintage</div>
+              <div class="carousel-item" data-theme="modern">Modern</div>
+              <div class="carousel-item" data-theme="pastel">Pastell</div>
+          </div>
+          <button id="next-theme" class="carousel-btn">&rarr;</button>
+        </div>     
+        <div class="container">     
           
           <!-- Timer -->
-          <div id="timer" class="text-center m-2">0:00</div>
+          <div id="timer" class="text-center mt-3">0:00</div>
           <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio>
 
           <!-- Wasser State -->
-          <div class="m-2">
-            <label class="wate-state-label" for="water-state">Wasserzustand</label>
+          <div class="m-2 button-options-flex">
+            <label class="water-state-label" for="water-state">Wasserzustand</label>
             <fieldset class="btn-group">
                 <button type="button" class="btn btn-outline-primary water-state" data-water="cooking">Kocht</button>
                 <button type="button" class="btn btn-outline-primary water-state active" data-water="cold">Kalt</button>
@@ -50,7 +48,7 @@
           </div>
 
           <!-- Eiergröße -->
-          <div class="m-2">
+          <div class="m-2 button-options-flex">
             <label class="egg-size-label" for="egg-size">Eiergröße</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary egg-size small" data-size="S"><i class="fas fa-egg"></i> S</button>
@@ -60,7 +58,7 @@
           </div>
 
           <!-- Eigrad -->
-          <div class="m-2">
+          <div class="m-2 button-options-flex">
             <label class="egg-type-label" for="egg-type">Eigrad</label>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary egg-type" data-type="soft"><i class="fas fa-thermometer-empty"></i> Weich</button>
@@ -70,25 +68,19 @@
           </div>
 
           <!-- Timer Block -->
-          <div class="m-2 d-flex">
-            <fieldset>
-              <legend class="minutes-label">Minuten:</legend>
-              <input type="number" id="minutes" class="form-control m-2" alt="Minuten" min="0" style="width: 100px;">
-            </fieldset>
-            <fieldset>
-              <legend class="seconds-label">Sekunden:</legend>
-              <input type="number" id="seconds" class="form-control m-2" alt="Sekunden" min="0" style="width: 100px;">
-            </fieldset>
+          <div class="m-2 timerblock-container">
+            <input type="number" id="minutes" class="form-control m-2" alt="Minuten" min="0" style="width: 100px;">
+            <input type="number" id="seconds" class="form-control m-2" alt="Sekunden" min="0" max="59" style="width: 100px;">
             <button id="start" class="btn btn-secondary m-2">Start</button>
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
-          <div class="m-2">
-            <label class="language-label" for="language-select">Sprache:</label>
-            <select id="language-select" class="form-select">
-              <option value="de">Deutsch</option>
-              <option value="en">English</option>
-            </select>
-          </div>
+        </div>
+        <div class="m-1 language-select-flex">
+          <label class="language-label" for="language-select">Sprache:</label>
+          <select id="language-select" class="form-select">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+          </select>
         </div>
        </div>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

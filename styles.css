@@ -141,8 +141,8 @@ footer {
 .container {
     background-color: var(--background-color-primary);
     border-radius: 10px;
-    border: solid 1px var(--secondary-color);
-    padding: 1em;
+    border: solid 1px var(--secondary-color); 
+    padding: 0em 1em 0em 1em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     min-width: 360px;
@@ -210,8 +210,10 @@ legend {
 .carousel {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .carousel-inner {
@@ -266,5 +268,45 @@ legend {
 }
 
 #timer {
-    font-size: 3em;
+    font-size: 5em;
+    border: 1px var(--secondary-color) dotted;
+    border-radius: 5px;
+    padding: 0.2em;
+    background-color: var(--primary-color);
+    color: var(--background-color-primary);
+}
+
+.timerblock-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.language-select-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+.button-options-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+.button-options-flex:nth-child(1) {
+    flex-basis: 100px;
+}
+
+.button-options-flex .btn-group {
+    flex-grow: 1;
 }
