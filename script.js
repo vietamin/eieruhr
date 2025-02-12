@@ -105,6 +105,11 @@ function updateTime() {
     timerMode = 'detailed';
 }
 
+// Function to add a zero before the number if it is less than 10
+function addZero(number) {
+    return number < 10 ? '0' + number : number;
+}
+
 // Manuelle Eingabe überwachen
 timerMinutes.addEventListener('input', handleManualInput);
 timerSeconds.addEventListener('input', handleManualInput);
@@ -174,13 +179,14 @@ document.getElementById('start').addEventListener('click', function() {
     const interval = setInterval(() => {
         const minutesLeft = Math.floor(time / 60);
         const secondsLeft = time % 60;
-        timerElement.textContent = `${minutesLeft}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+        //timerElement.textContent = `${minutesLeft}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+        timerMinutes.value = addZero(minutesLeft);
+        timerSeconds.value = addZero(secondsLeft);
 
         document.getElementById('reset').addEventListener('click', function() {
             clearInterval(interval); // Stoppt den Timer
-            document.getElementById('minutes').value = '0';
-            document.getElementById('seconds').value = '0';
-            document.getElementById('timer').textContent = '0:00';
+            timerMinutes.value = '00';
+            timerSeconds.value = '00';
             alarm.pause();
             alarm.currentTime = 0;
             // Setze die Auswahl zurück
@@ -215,9 +221,9 @@ document.getElementById('start').addEventListener('click', function() {
                 background: "var(--background-color)",
                 html: `
                     <p>${translations.eggsReady}</p>
-                    <p><strong>${translations.timer}:</strong> ${timerMinutes.value}:${timerSeconds.value < 10 ? '0' : ''}${timerSeconds.value} </p>
+                    <p><strong>${translations.timer}:</strong> ${addZero(manualMinutes)}:${addZero(manualSeconds)} </p>
                     ${timerModeOutput}
-                    <p><strong>${translations.timeElapsed}:</strong> <span id="elapsed-time">0:00</span></p>
+                    <p><strong>${translations.timeElapsed}:</strong> <span id="elapsed-time">00:00</span></p>
                 `,
                 didOpen: () => {
                     // Timer im Dialog starten
@@ -225,7 +231,7 @@ document.getElementById('start').addEventListener('click', function() {
                         elapsedTime++;
                         const minutes = Math.floor(elapsedTime / 60);
                         const seconds = elapsedTime % 60;
-                        document.getElementById('elapsed-time').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                        document.getElementById('elapsed-time').textContent = `${addZero(minutes)}:${addZero(seconds)}`;
                     }, 1000);
 
                     // Timer stoppen, wenn der Dialog geschlossen wird
@@ -240,7 +246,8 @@ document.getElementById('start').addEventListener('click', function() {
                 // Alarm-Sound stoppen, sobald der Dialog geschlossen wird
                 alarm.pause();
                 alarm.currentTime = 0; // Sound zurücksetzen
-                document.getElementById('timer').textContent = '0:00';
+                timerMinutes.value = addZero(manualMinutes);
+                timerSeconds.value = addZero(manualSeconds);
             });
         } else {
             time--;

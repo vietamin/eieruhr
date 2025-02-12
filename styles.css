@@ -274,9 +274,29 @@ legend {
     padding: 0.2em;
     background-color: var(--primary-color);
     color: var(--background-color-primary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-time {
+    background-color: transparent;
+    border: none;
+    color: var(--background-color-primary);
+    width: 2em;
+    text-align: center;
+    padding: 0.2em;
 }
 
 .timerblock-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.timer-flex-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

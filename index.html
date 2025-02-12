@@ -35,7 +35,10 @@
         <div class="container">     
           
           <!-- Timer -->
-          <div id="timer" class="text-center mt-3">0:00</div>
+          <div id="timer" class="mt-3">
+            <input type="number" class="input-time" id="minutes" alt="Minuten" min="0" max="99" value="00">
+            <span>:</span>
+            <input type="number" class="input-time" id="seconds" alt="Sekunden" min="0" max="59" value="00"></div>
           <audio id="alarm" src="649404__skylarmianlind__kawa-ringtone.wav" loop></audio>
 
           <!-- Wasser State -->
@@ -61,16 +64,14 @@
           <div class="m-2 button-options-flex">
             <label class="egg-type-label" for="egg-type">Eigrad</label>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-primary egg-type" data-type="soft"><i class="fas fa-thermometer-empty"></i> Weich</button>
+              <button type="button" class="btn btn-outline-primary egg-type" data-type="soft"><i class="fas fa-thermometer-empty"></i> Weich</button>
               <button type="button" class="btn btn-outline-primary egg-type active" data-type="medium"><i class="fas fa-thermometer-half"></i> Medium</button>
               <button type="button" class="btn btn-outline-primary egg-type" data-type="hard"><i class="fas fa-thermometer-full"></i> Hart</button>
             </div>
           </div>
 
           <!-- Timer Block -->
-          <div class="m-2 timerblock-container">
-            <input type="number" id="minutes" class="form-control m-2" alt="Minuten" min="0" style="width: 100px;">
-            <input type="number" id="seconds" class="form-control m-2" alt="Sekunden" min="0" max="59" style="width: 100px;">
+          <div class="m-2 action-container">
             <button id="start" class="btn btn-secondary m-2">Start</button>
             <button id="reset" class="btn btn-danger m-2">Reset</button>
           </div>
